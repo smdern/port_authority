@@ -1,7 +1,6 @@
-require "port_authority/version"
-
 module PortAuthority
   class Application
+    require "port_authority/session"
 
     def initialize(host, username, options={})
       @host = host
