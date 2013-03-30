@@ -10,16 +10,18 @@ module PortAuthority
     end
 
     def list_directory(path='')
-      return if path.empty?
       files = []
 
-      start_session do |sftp|
-        sftp.dir.foreach(path) do |entry|
-          files << entry
+      unless path.empty?
+        start_session do |sftp|
+          sftp.dir.foreach(path) do |entry|
+            files << entry
+          end
         end
       end
       files
     end
+
 
     private
 
