@@ -8,19 +8,24 @@ module PortAuthority
       @options = options
     end
 
-    def list_directory(path='')
+    def directory_contents(path='')
       files = []
 
       unless path.empty?
         start_session do |sftp|
           sftp.dir.foreach(path) do |entry|
-            files << entry
+            files << entry unless %w[. ..].include?(entry.name)
           end
         end
       end
       files
     end
 
+    def list_directory(path='')
+      directory_contents(path).each do |file|
+        puts file.name
+      end
+    end
 
     private
 
