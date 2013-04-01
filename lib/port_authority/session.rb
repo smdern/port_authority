@@ -1,6 +1,8 @@
 class PortAuthority::Session
   require 'net/sftp'
 
+  attr_reader :host, :username, :options
+
   def initialize(host, username, options={})
     @host = host
     @username = username
