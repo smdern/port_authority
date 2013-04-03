@@ -5,7 +5,7 @@ describe PortAuthority::Application do
   let(:session) { mock }
 
   before do
-    PortAuthority::Session.stub(:new).and_return(session)
+    PortAuthority::Session.stub(new: session)
   end
 
   describe "#start_session" do
