@@ -1,8 +1,8 @@
+require "port_authority/session"
+require "port_authority/progress_handler"
+
 module PortAuthority
   class Application
-    require "port_authority/session"
-    require "port_authority/progress_handler"
-
     def initialize(host, username, options={})
       @host = host
       @username = username

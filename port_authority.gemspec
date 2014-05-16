@@ -5,7 +5,7 @@ require 'port_authority/version'
 
 Gem::Specification.new do |spec|
   spec.authors       = ["Shaun Dern"]
-  spec.email         = ["shaun@substantial.com"]
+  spec.email         = ["smdern@gmail.com"]
 
   spec.name          = "port_authority"
   spec.version       = PortAuthority::VERSION

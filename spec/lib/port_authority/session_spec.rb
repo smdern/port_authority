@@ -1,20 +1,23 @@
 require 'spec_helper'
 
 describe PortAuthority::Session do
-  let(:session) { PortAuthority::Session.new("some_host", "awesome_user", foo: 'bar') }
+  let(:host) { 'some_host' }
+  let(:user) { 'some_user' }
+  let(:options) { { foo: 'bar' } }
+  let(:session) { PortAuthority::Session.new(host, user, options) }
 
   describe "#initialize" do
     it "should set the host" do
-      session.host.should == "some_host"
+      session.host.should == host
     end
 
     it "should set the username" do
-      session.username.should == "awesome_user"
+      session.username.should == user
     end
 
     it "should set options" do
       session.options.should be_a Hash
-      session.options.should include({ foo: 'bar' })
+      session.options.should include(options)
     end
   end
 
@@ -29,9 +32,10 @@ describe PortAuthority::Session do
     end
 
     it "should start the session and pass the block" do
-      some_code = lambda { }
-      Net::SFTP.should_receive(:start).with("some_host", "awesome_user", {foo: 'bar'}, &some_code)
-      session.start(&some_code)
+      some_block = proc { 'bar' }
+      expect(Net::SFTP).to receive(:start).with(host, user, options) { |&block| expect(block).to eq(some_block) }
+
+      session.start(&some_block)
     end
   end
 end
