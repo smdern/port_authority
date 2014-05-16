@@ -1,5 +1,6 @@
+require 'net/sftp'
+
 class PortAuthority::Session
-  require 'net/sftp'
 
   attr_reader :host, :username, :options
 
