@@ -5,7 +5,7 @@ require 'port_authority/version'
 
 Gem::Specification.new do |spec|
   spec.authors       = ["Shaun Dern"]
-  spec.email         = ["shaun@substantial.com"]
+  spec.email         = ["smdern@gmail.com"]
 
   spec.name          = "port_authority"
   spec.version       = PortAuthority::VERSION
@@ -19,9 +19,10 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_development_dependency "bundler", "~> 1.3"
-  spec.add_development_dependency "rspec", "~> 2.13.0"
-  spec.add_development_dependency "rake", "~> 10.0.0"
+  spec.add_development_dependency "rspec", "~> 2.14"
+  spec.add_development_dependency "rake", "~> 10.3"
 
-  spec.add_dependency "net-sftp", "~> 2.1.1"
+  spec.add_dependency "net-sftp", "~> 2.1"
+  spec.add_dependency "ruby-progressbar", "~> 1.5.1"
 end
 

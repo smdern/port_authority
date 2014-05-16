@@ -1,7 +1,8 @@
+require "port_authority/session"
+require "port_authority/progress_handler"
+
 module PortAuthority
   class Application
-    require "port_authority/session"
-
     def initialize(host, username, options={})
       @host = host
       @username = username
@@ -27,10 +28,18 @@ module PortAuthority
       end
     end
 
+    def copy_contents(source="", destintation="")
+      start_session do |sftp|
+        sftp.download!(source, destintation, recursive: true, progress: PortAuthority::ProgressHandler.new)
+      end
+    end
+
     private
+    attr_reader :host, :username, :options
 
     def start_session(&block)
-      PortAuthority::Session.new(@host, @username, @options).start(&block)
+      @session ||= PortAuthority::Session.new(host, username, options)
+      @session.start(&block)
     end
   end
 end
