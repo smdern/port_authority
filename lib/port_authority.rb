@@ -35,9 +35,10 @@ module PortAuthority
     end
 
     private
+    attr_reader :host, :username, :options
 
     def start_session(&block)
-      @session ||= PortAuthority::Session.new(@host, @username, @options)
+      @session ||= PortAuthority::Session.new(host, username, options)
       @session.start(&block)
     end
   end
