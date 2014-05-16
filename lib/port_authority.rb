@@ -1,5 +1,5 @@
-require "port_authority/session"
-require "port_authority/progress_handler"
+require_relative "port_authority/session"
+require_relative "port_authority/progress_handler"
 
 module PortAuthority
   class Application
@@ -9,7 +9,7 @@ module PortAuthority
       @options = options
     end
 
-    def directory_contents(path='')
+    def directory_contents(path)
       files = []
 
       unless path.empty?
@@ -22,13 +22,13 @@ module PortAuthority
       files
     end
 
-    def list_directory(path='')
+    def list_directory(path)
       directory_contents(path).each do |file|
-        puts file.name
+        puts "#{file.name} which is #{file.attributes.size} kB"
       end
     end
 
-    def copy_contents(source="", destintation="")
+    def copy_contents(source, destintation)
       start_session do |sftp|
         sftp.download!(source, destintation, recursive: true, progress: PortAuthority::ProgressHandler.new)
       end

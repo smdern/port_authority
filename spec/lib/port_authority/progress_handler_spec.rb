@@ -1,6 +1,9 @@
 require 'spec_helper'
 
-describe PortAuthority::ProgressHandler do
+module PortAuthority
+  describe ProgressHandler do
+    it "" do
 
+    end
+  end
 end
-

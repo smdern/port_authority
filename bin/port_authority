@@ -2,4 +2,14 @@
 
 require_relative '../lib/port_authority'
 
+require 'pry'
+
 puts "USING PORT AUTHORITY"
+
+app = PortAuthority::Application.new('blush.feralhosting.com', 'cricketking', keys: "~/.ssh/homeserver")
+
+root_dir = "/media/sdg1/home/cricketking/private/rtorrent/data"
+
+app.list_directory(root_dir)
+
+app.copy_contents(root_dir, "/Users/shaun/Desktop/")
