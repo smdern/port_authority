@@ -1,11 +1,5 @@
 #!/usr/bin/env ruby
 
-begin
-  require 'port_authority'
-rescue LoadError
-  require 'rubygems'
-  require 'port_authority'
-end
+require_relative '../lib/port_authority'
 
 puts "USING PORT AUTHORITY"
-
